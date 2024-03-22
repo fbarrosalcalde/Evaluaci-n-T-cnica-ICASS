@@ -1,0 +1,24 @@
+2.
+
+La primera consulta selecciona la descripción y la fecha de las actividades realizadas por la hormiga con el id 5.
+
+SELECT Actividad.descripcion, Realiza.fecha
+FROM Realiza, Actividad
+WHERE Realiza.id_actividad = Actividad.id AND Realiza.id_hormiga = 5
+
+La segunda consulta cuenta el número de hormigas obreras en cada colonia y luego ordena los resultados por la cantidad de obreras en orden descendente. 
+
+SELECT id_colonia, COUNT(*) AS cantidad_obreras FROM Hormiga
+WHERE tipo = 'Obrera'
+GROUP BY id_colonia
+ORDER BY cantidad_obreras DESC;
+
+La tercera consulta cuenta cuántas veces se ha emitido cada tipo de feromona y muestra solo aquellos tipos que se han emitido más de 10 veces, ordenando los resultados por la cantidad total de feromonas en orden descendente.
+
+SELECT Feromona.tipo AS tipo_feromona, COUNT(*) AS total_feromonas
+FROM Feromona, Emite
+WHERE Feromona.id = Emite.id_feromona
+GROUP BY Feromona.tipo
+HAVING COUNT(*) > 10
+ORDER BY total_feromonas DESC;
+
