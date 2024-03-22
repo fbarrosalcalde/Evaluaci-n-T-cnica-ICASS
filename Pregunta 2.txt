@@ -8,7 +8,8 @@ WHERE Realiza.id_actividad = Actividad.id AND Realiza.id_hormiga = 5
 
 La segunda consulta cuenta el número de hormigas obreras en cada colonia y luego ordena los resultados por la cantidad de obreras en orden descendente. 
 
-SELECT id_colonia, COUNT(*) AS cantidad_obreras FROM Hormiga
+SELECT id_colonia, COUNT(*) AS cantidad_obreras
+FROM Hormiga
 WHERE tipo = 'Obrera'
 GROUP BY id_colonia
 ORDER BY cantidad_obreras DESC;
